@@ -1,0 +1,111 @@
+/* Reset some default browser styles */
+body,
+h1,
+h3,
+p,
+a {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Basic styles for the body */
+body {
+  background-color: #139599;
+  padding: 20px;
+  line-height: 1.6;
+}
+
+/* Header styles */
+header {
+  background: #333;
+  color: #fff;
+  margin-bottom: 3rem;
+  padding: 20px 20px;
+  text-align: center;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2em;
+  color: darkcyan;
+}
+
+header a {
+  display: inline-block;
+  padding: 12px 25px;
+  background: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+header a:hover {
+  background-color: black;
+  color: white;
+}
+/* Container for article content */
+section {
+  width: 60%;
+  background: #fff;
+  margin: 0 auto;
+  padding: 20px 40px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Paragraph styles */
+p {
+  margin-bottom: 15px;
+}
+
+/* Styles for article details */
+div p {
+  font-size: 1.1em;
+  color: #333;
+}
+
+/* Styles for links */
+div a {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  margin: 10px 5px 0 0;
+  padding: 10px 15px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.edit {
+  background-color: green;
+}
+
+.delete {
+  background-color: red;
+}
+
+.like {
+  background-color: darkblue;
+}
+
+.dislike {
+  background-color: chocolate;
+}
+
+div a:hover {
+  font-weight: bold;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
