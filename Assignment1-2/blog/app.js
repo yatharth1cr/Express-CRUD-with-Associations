@@ -7,10 +7,14 @@ var mongoose = require("mongoose");
 
 var indexRouter = require("./routes/index");
 var articleRouter = require("./routes/article");
+var commmentsRouter = require("./routes/comment");
 
 // connected to mongoDB
 mongoose
-  .connect("mongodb://localhost/blog", {})
+  .connect("mongodb://localhost/blog", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Connected to DATABASE");
   })
@@ -34,6 +38,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/article", articleRouter);
+app.use("/comments", commmentsRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
