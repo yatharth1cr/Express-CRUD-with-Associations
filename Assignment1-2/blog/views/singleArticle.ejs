@@ -8,26 +8,59 @@
   </head>
   <body>
     <header>
-      <h1><%= article.title %></h1>
+      <h1 style="color: white">Single Article</h1>
       <a href="/article">
-        <h3>Back To Articles</h3>
+        <h3>🔙Back To Articles</h3>
       </a>
     </header>
-    <section>
+    <main>
+      <section>
+        <div>
+          <h1><%= article.title %></h1>
+          <p><%= article.description %></p>
+          <p><%= article.tags %></p>
+          <p><%= article.author %></p>
+          <p><%= article.likes %></p>
+        </div>
+        <div class="btn">
+          <a href="/article/<%= article.id %>/edit" class="edit">✏️Edit</a>
+          <a href="/article/<%= article.id %>/delete" class="delete">
+            🗑️Delete
+          </a>
+          <a href="/article/<%= article.id %>/like" class="like"> 👍Like </a>
+          <a href="/article/<%= article.id %>/dislike" class="dislike">
+            👎Dislike
+          </a>
+        </div>
+      </section>
       <div>
-        <p><%= article.description %></p>
-        <p><%= article.tags %></p>
-        <p><%= article.author %></p>
-        <p><%= article.likes %></p>
+        <form action="/article/<%= article.id %>/comments" method="post">
+          <textarea
+            name="content"
+            rows="3"
+            placeholder="Add Comment..."
+            required
+          ></textarea>
+          <input type="submit" value="Add Comment💬" class="btn-comment" />
+        </form>
       </div>
-      <div class="btn">
-        <a href="/article/<%= article._id %>/edit" class="edit">Edit</a>
-        <a href="/article/<%= article._id %>/delete" class="delete"> Delete </a>
-        <a href="/article/<%= article._id %>/like" class="like"> Like </a>
-        <a href="/article/<%= article._id %>/dislike" class="dislike">
-          Dislike
-        </a>
-      </div>
-    </section>
+      <section class="comments-section">
+        <h2>Comments</h2>
+        <hr />
+        <% article.comments.forEach(comment => { %>
+        <div class="comment">
+          <p><strong><%= comment.author %>:</strong> <%= comment.content %></p>
+          <div class="comment-btns">
+            <a href="/comments/<%= comment.id %>/edit" class="edit-comment"
+              >✏️Edit</a
+            >
+            <a href="/comments/<%= comment.id %>/delete" class="delete-comment"
+              >🗑️Delete</a
+            >
+          </div>
+        </div>
+        <% }) %>
+      </section>
+    </main>
   </body>
 </html>

@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Blog = require("../models/Blog");
-var Blog = require("../models/Comment");
+var Comment = require("../models/Comment");
 
 // Create article form
 router.get("/new", (req, res) => {
@@ -34,6 +34,8 @@ router.get("/", (req, res, next) => {
 router.get("/:id", (req, res, next) => {
   var id = req.params.id;
   Blog.findById(id)
+    .populate("comments")
+    .exec()
     .then((article) => {
       res.render("singleArticle", { article });
     })
@@ -70,8 +72,14 @@ router.post("/:id", (req, res, next) => {
 router.get("/:id/delete", (req, res, next) => {
   var id = req.params.id;
   Blog.findByIdAndDelete(id)
-    .then(() => {
-      res.redirect("/article");
+    .then((article) => {
+      Comment.deleteMany({ articleId: article.id })
+        .then(() => {
+          res.redirect("/article");
+        })
+        .catch(() => {
+          return next(err);
+        });
     })
     .catch((err) => {
       return next(err);
@@ -101,4 +109,25 @@ router.get("/:id/dislike", (req, res, next) => {
       return next(err);
     });
 });
+
+// add comment
+router.post("/:id/comments", (req, res, next) => {
+  var id = req.params.id;
+  req.body.articleId = id;
+  Comment.create(req.body)
+    .then((comment) => {
+      Blog.findByIdAndUpdate(id, { $push: { comments: comment._id } })
+        .then((updatedArticle) => {
+          res.redirect("/article/" + id);
+        })
+        .catch((err) => {
+          return next(err);
+        });
+    })
+    .catch((err) => {
+      return next(err);
+    });
+});
+
+// export router
 module.exports = router;

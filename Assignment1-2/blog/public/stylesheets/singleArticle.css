@@ -11,7 +11,7 @@ a {
 
 /* Basic styles for the body */
 body {
-  background-color: #139599;
+  background-color: lightgray;
   padding: 20px;
   line-height: 1.6;
 }
@@ -20,8 +20,8 @@ body {
 header {
   background: #333;
   color: #fff;
-  margin-bottom: 3rem;
-  padding: 20px 20px;
+  margin-bottom: 20px;
+  padding: 20px;
   text-align: center;
   border-radius: 5px;
   display: flex;
@@ -29,10 +29,10 @@ header {
   justify-content: space-between;
 }
 
-header h1 {
+h1 {
   margin: 0;
   font-size: 2em;
-  color: darkcyan;
+  color: salmon;
 }
 
 header a {
@@ -48,64 +48,145 @@ header a:hover {
   background-color: black;
   color: white;
 }
+
 /* Container for article content */
-section {
-  width: 60%;
+main {
+  width: 70%;
   background: #fff;
   margin: 0 auto;
-  padding: 20px 40px;
+  padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
-/* Paragraph styles */
-p {
-  margin-bottom: 15px;
+section {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 /* Styles for article details */
-div p {
+section div p {
   font-size: 1.1em;
   color: #333;
+  margin: 1rem 0;
 }
 
 /* Styles for links */
-div a {
-  width: 100%;
-  text-align: center;
-  display: inline-block;
-  margin: 10px 5px 0 0;
+section div a {
+  margin: 0 5px;
   padding: 10px 15px;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
+  text-align: center;
+  width: 15%;
 }
 
 .edit {
-  background-color: green;
+  background-color: #04a92c;
 }
 
 .delete {
-  background-color: red;
+  background-color: #d35a5a;
 }
 
 .like {
-  background-color: darkblue;
+  background-color: #1885f2;
 }
 
 .dislike {
   background-color: chocolate;
 }
 
-div a:hover {
+section div a:hover {
   font-weight: bold;
 }
 
 .btn {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   align-items: center;
+}
+
+form {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+textarea {
+  width: 40%;
+}
+
+.btn-comment {
+  background-color: darkcyan;
+  border: none;
+  margin-top: 10px;
+  padding: 0.5rem;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-comment:hover {
+  background-color: rgb(5, 89, 5);
+}
+
+/* Comments section styles */
+.comments-section {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.comments-section h2 {
+  margin-bottom: 0;
+  color: darkcyan;
+}
+
+hr {
+  margin: 0 auto 2rem auto;
+}
+
+.comment {
+  width: 98%;
+  background: #dadada;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.comment p {
+  margin: 0;
+}
+
+.comment .comment-btns {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.comment .comment-btns a {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.edit-comment {
+  background-color: #007bff;
+}
+
+.delete-comment {
+  background-color: #dc3545;
+}
+
+.comment .comment-btns a:hover {
+  font-weight: bold;
 }
