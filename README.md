@@ -10,3 +10,5 @@
 - **Add Comments for Book**
 ## 5. List, update & delete comments in bookstore
 - **List, update & delete comments for a single book**
+## 6. Populate using mongoose
+- **Populate comments in bookstore**
